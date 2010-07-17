@@ -18,18 +18,16 @@ Template Name: List of Taxonomies
 ?>
 
 <?php get_header(); 
-/* $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); */
+
 global $post;
 $page = get_page($post->ID);
-echo '<br><br>';
 global $taxonomy;
 $taxonomy = get_taxonomy($page->post_name);
-/* var_dump($taxonomy); */
 ?>
 		<div id="container">
 			<div id="content" role="main">
 
-<?php printf( __( '%s', 'twentyten' ), '<h2>' . $taxonomy->labels->name . '</h2>' ); 
+<?php printf( __( '%s', 'twentyten' ), '<h1 class="page-title">' . $taxonomy->labels->name . '</h1>' ); 
 /* var_dump($taxonomy); */ ?>
 <ul>
 <?php $myterms = get_terms($taxonomy->name, 'orderby=name&hide_empty=0'); 

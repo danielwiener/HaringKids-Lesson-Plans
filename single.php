@@ -21,11 +21,11 @@
 				</div><!-- #nav-above -->
 
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<h1 class="entry-title"><?php the_title(); ?></h1>
+					<h1 class="page-title"><?php the_title(); ?></h1>
 
-					<div class="entry-meta">
-						<?php twentyten_posted_on(); ?>
-					</div><!-- .entry-meta -->
+					<div id="dw_author">
+					<p>by <?php the_author_posts_link(); ?></p>
+					</div><!-- #dw_author -->
 
 					<div class="entry-content"><?php
 				$curriculum_list = get_the_term_list( $post->ID, 'curriculum', '<strong>Curriculum:</strong> ', ', ', '' );  
@@ -36,24 +36,74 @@
 				$location_list = get_the_term_list( $post->ID, 'location', '<strong>Location:</strong> ', ', ', '' );
 				
 				?>
-				<ul>
+				
+						
+						<?php if(has_post_thumbnail()): ?>
+			<a href="<?php the_permalink(); ?>">
+			<?php the_post_thumbnail('',  array('title' => trim(strip_tags($post->post_title)), 'alt' => trim(strip_tags($post->post_title)))); 
+			?>
+			</a>
+			<?php
+			if(!empty($post->post_content)) : ?>
+						<p><a href="#more_images">View More Images</a></p>
+						<?php endif; ?>
+			<?php endif; ?>
+			<h2>Digest</h2>
+			<ul>
 				<li><?php echo $curriculum_list; ?></li>
 				<li><?php echo $age_grade_list; ?></li>
 				<li><?php echo $subject_list; ?></li>
 				<li><?php echo $materials_list; ?></li>
 				<li><?php echo $institution_list; ?></li>
 				<li><?php echo $location_list; ?></li>
-				</ul>
+				</ul>			
+						
+						 
 						 <?php
-						 the_content(); ?>
+						if(get_post_meta($post->ID, "_dwdescription_value", $single = true) != "") : ?>
+						<h2>Description</h2><p><?php echo get_post_meta($post->ID, "_dwdescription_value", $single = true);?></p>
+						<?php endif; ?>
+						<?php
+						if(get_post_meta($post->ID, "_objective_value", $single = true) != "") : ?>
+						<h2>Objective</h2><p><?php echo get_post_meta($post->ID, "_objective_value", $single = true);?></p>
+						<?php endif; ?>
+						<?php
+						if(get_post_meta($post->ID, "_resources_value", $single = true) != "") : ?>
+						<h2>Resources</h2><p><?php echo get_post_meta($post->ID, "_resources_value", $single = true);?></p>
+						<?php endif; ?>
+						<?php
+						if(get_post_meta($post->ID, "_materials_value", $single = true) != "") : ?>
+						<h2>Materials</h2><p><?php echo get_post_meta($post->ID, "_materials_value", $single = true);?></p>
+						<?php endif; ?>
+						<?php
+						if(get_post_meta($post->ID, "_procedure_value", $single = true) != "") : ?>
+						<h2>Procedure</h2><p><?php echo get_post_meta($post->ID, "_procedure_value", $single = true);?></p>
+						<?php endif; ?>
+						<?php
+						if(get_post_meta($post->ID, "_questions_value", $single = true) != "") : ?>
+						<h2>Questions</h2><p><?php echo get_post_meta($post->ID, "_questions_value", $single = true);?></p>
+						<?php endif; ?>
+						<?php
+						if(get_post_meta($post->ID, "_extensions_value", $single = true) != "") : ?>
+						<h2>Extensions</h2><p><?php echo get_post_meta($post->ID, "_extensions_value", $single = true);?></p>
+						<?php endif; ?>
+						<?php
+						if(!empty($post->post_content)) : ?>
+						<a name="more_images">&nbsp;</a>
+						<h2>Images</h2>
+						<?php the_content(); ?>
+						<?php endif; ?>
+						
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); ?>
 					</div><!-- .entry-content -->
 
 <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 					<div id="entry-author-info">
-						<div id="author-avatar">
-							<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'twentyten_author_bio_avatar_size', 60 ) ); ?>
-						</div><!-- #author-avatar -->
+						<!-- <div id="author-avatar"> -->
+							<?php /* if(!empty(the_author_image())){
+							the_author_image();
+							} fix this. figure it out - author image*/?>
+						<!-- </div> --><!-- #author-avatar -->
 						<div id="author-description">
 							<h2><?php printf( esc_attr__( 'About %s', 'twentyten' ), get_the_author() ); ?></h2>
 							<?php the_author_meta( 'description' ); ?>
@@ -67,8 +117,7 @@
 <?php endif; ?>
 
 					<div class="entry-utility">
-						<?php twentyten_posted_in(); ?>
-						<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="edit-link">', '</span>' ); ?>
+					&nbsp;
 					</div><!-- .entry-utility -->
 				</div><!-- #post-## -->
 

@@ -5,34 +5,22 @@
  * Displays all of the <head> section and everything up till <div id="main">
  *
  * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
+ * @subpackage HaringKids Database -> Twenty_Ten
+ * @since HaringKids .1
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<title>
-	<?php // Returns the title based on what is being viewed
-		if ( is_single() ) { // single posts
-			single_post_title(); echo ' | '; bloginfo( 'name' );
-		// The home page or, if using a static front page, the blog posts page.
-		} elseif ( is_home() || is_front_page() ) {
-			bloginfo( 'name' );
-			if( get_bloginfo( 'description' ) )
-				echo ' | ' ; bloginfo( 'description' );
-			twentyten_the_page_number();
-		} elseif ( is_page() ) { // WordPress Pages
-			single_post_title( '' ); echo ' | '; bloginfo( 'name' );
-		} elseif ( is_search() ) { // Search results
-			printf( __( 'Search results for %s', 'twentyten' ), '"'.get_search_query().'"' ); twentyten_the_page_number(); echo ' | '; bloginfo( 'name' );
-		} elseif ( is_404() ) {  // 404 (Not Found)
-			_e( 'Not Found', 'twentyten' ); echo ' | '; bloginfo( 'name' );
-		} else { // Otherwise:
-			wp_title( '' ); echo ' | '; bloginfo( 'name' ); twentyten_the_page_number();
-		}
-	?>
-	</title>
+<title><?php
+	/*
+	 * Print the <title> tag based on what is being viewed.
+	 * We filter the output of wp_title() a bit -- see
+	 * twentyten_filter_wp_title() in functions.php.
+	 */
+	wp_title( '|', true, 'right' );
+
+	?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -51,13 +39,15 @@
 
 	wp_head();
 ?>
+
+
 </head>
 
 <body <?php body_class(); ?>>
 <div id="wrapper" class="hfeed">
 	<div id="header">
 		<div id="masthead">
-			<div id="branding" role="banner">
+			<div id="dw_branding" role="banner">
 				<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
 				<<?php echo $heading_tag; ?> id="site-title">
 					<span>
@@ -66,18 +56,7 @@
 				</<?php echo $heading_tag; ?>>
 				<div id="site-description"><?php bloginfo( 'description' ); ?></div>
 
-				<?php
-					// Check if this is a post or page, if it has a thumbnail, and if it's a big one
-					if ( is_singular() &&
-							has_post_thumbnail( $post->ID ) &&
-							( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail' ) ) &&
-							$image[1] >= HEADER_IMAGE_WIDTH ) :
-						// Houston, we have a new header image!
-						echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
-					else : ?>
-						<img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="" />
-					<?php endif; ?>
-			</div><!-- #branding -->
+							</div><!-- #dw_branding -->
 
 			<div id="access" role="navigation">
 			  <?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
