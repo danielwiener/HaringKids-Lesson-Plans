@@ -29,11 +29,7 @@
 			</div><!-- #site-info -->
 
 			<div id="site-generator">
-				<?php do_action( 'twentyten_credits' ); ?>
-				<a href="<?php echo esc_url( __('http://wordpress.org/', 'twentyten') ); ?>"
-						title="<?php esc_attr_e('Semantic Personal Publishing Platform', 'twentyten'); ?>" rel="generator">
-					<?php printf( __('%s.', 'twentyten'), '' ); ?>
-				</a> | <a href="http://www.danielwiener.com">DW</a>
+			<a href="http://www.haring.com">The Keith Haring Foundation</a> &copy;1997&#8211;<?php echo date('Y'); ?> | <a href="http://www.danielwiener.com">design by DW</a>
 			</div><!-- #site-generator -->
 
 		</div><!-- #colophon -->
