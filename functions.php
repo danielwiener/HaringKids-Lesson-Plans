@@ -1,5 +1,4 @@
 <?php
-
 // Custom Taxonomy Code  
 add_action( 'init', 'build_taxonomies', 0 );  
  
@@ -213,7 +212,6 @@ function numeric_pagination ($pageCount = 2, $query = null) {
 		<span class="numbered page-number-<?php echo $p; ?> current-numeric-page"><?php echo $p; ?></span>
 <?php } else { ?>
 		<a href="<?php echo get_pagenum_link($p); ?>" class="numbered page-number-<?php echo $p; ?>"><span><?php echo $p; ?></span></a>
-
 <?php
 		}
 	}
@@ -225,12 +223,11 @@ function numeric_pagination ($pageCount = 2, $query = null) {
 ?>
 		<a href="<?php echo get_pagenum_link($query->max_num_pages); ?>" class="numbered page-number-last"><span><?php _e('Oldest', 'gravy'); ?> &rsaquo;</span></a>
 <?php } ?>
-	
 	</div>
+<?php } /* end of pagination */
 
-<?php } ?>
 
-<?php
+/* Begin Meta Boxes */
 $new_meta_boxes =  
 array(  
 "dwdescription" => array(  
@@ -280,7 +277,6 @@ $meta_box_value = get_post_meta($post->ID, $meta_box['name'].'_value', true);
 
 $textarea_name = $meta_box['name'];
 $textarea_id = str_replace('_', '' , $textarea_name);
-
 
 
 if($meta_box_value == "")
@@ -336,10 +332,7 @@ delete_post_meta($post_id, $meta_box['name'].'_value', get_post_meta($post_id, $
 }
 add_action('admin_menu', 'create_meta_box');
 add_action('save_post', 'save_postdata');
- 
-
-?>
-<?php
+// end Custom Meta Boxes - Write Panels
 // Custom Admin Top Logo
 add_action('admin_head', 'my_custom_logo');
 
@@ -377,7 +370,4 @@ echo ('<span id="footer-thankyou">' . __('Dashboard modifications by <a href="ht
 }
 
 add_action('admin_footer_text', 'custom_footer');
-
-
-
 ?>
