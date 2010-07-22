@@ -116,6 +116,10 @@ ul {
 /* = SubContent TOC summary
 -------------------------------------------------------------- */
 
+#content_alt {
+padding: 0 0 0 5px;
+}
+
 #content h1 {
 font-size: 2em;
 letter-spacing: .05em;
@@ -124,7 +128,19 @@ margin: 0;
 padding: 0;
 }
 
+#content_alt h2 {
+font-size: 2em;
+letter-spacing: .05em;
+font-variant: small-caps;
+margin: 0;
+padding: 0 0 10px 20px;
+}
 
+#content_alt h3 {
+font-size: 1.5em;
+margin: 0;
+padding: 0 0 10px 20px;
+}
 
 #content ul li a {
 color: #666;
@@ -321,3 +337,10 @@ padding-left: 0px;
 	line-height: 16px;
 }
 */
+
+/* Front page css for slides */
+.alignleft, img.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 24px;
+	margin-top: 4px;
