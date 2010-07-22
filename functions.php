@@ -21,7 +21,7 @@ add_action( 'init', 'build_taxonomies', 0 );
 	register_taxonomy(
 	'curriculum',
 	'post',
-		array( 'hierarchical' => false,
+		array( 'hierarchical' => true,
 		'labels' => $labels,
 		'_builtin' => false,
 		'query_var' => true,
@@ -47,7 +47,7 @@ add_action( 'init', 'build_taxonomies', 0 );
 	register_taxonomy(
 	'age_grade',
 	'post',
-		array( 'hierarchical' => false,
+		array( 'hierarchical' => true,
 		'labels' => $labels,
 		'_builtin' => false,
 		'query_var' => true,
@@ -71,7 +71,7 @@ add_action( 'init', 'build_taxonomies', 0 );
 	register_taxonomy(
 	'subject',
 	'post',
-		array( 'hierarchical' => false,
+		array( 'hierarchical' => true,
 		'labels' => $labels,
 		'_builtin' => false,
 		'query_var' => true,
@@ -95,7 +95,7 @@ add_action( 'init', 'build_taxonomies', 0 );
 	register_taxonomy(
 	'materials',
 	'post',
-		array( 'hierarchical' => false,
+		array( 'hierarchical' => true,
 		'labels' => $labels,
 		'_builtin' => false,
 		'query_var' => true,
@@ -287,13 +287,14 @@ echo'<input type="hidden" name="'.$meta_box['name'].'_noncename" id="'.$meta_box
 echo '<h3>'. $meta_box['title'] .' - '. $meta_box['description'] .'</h3>';
 /* var_dump($new_meta_boxes); */
 echo '<div class="">';
-echo '	<script type="text/javascript">edToolbar()</script>';
+echo '	<script type="text/javascript">edToolbar("' . $textarea_id . '")</script>';
 echo '<textarea rows="6" class="form-input-tip" cols="80" name="'.$meta_box['name'].'_value" tabindex="' . $tab_index_count . '" id="' . $textarea_id . '" style="width: 97%">';
 echo wpautop($meta_box_value);
 echo '</textarea> <script type="text/javascript">';
 echo 'edCanvas = document.getElementById("' . $textarea_id . '");</script>';
+/* echo 'console.log(edToolbar())</script>';  */
 echo '</div><hr width="60%"';
-/* $tab_index_count++; */
+$tab_index_count++;
 }
 }
 function create_meta_box() {
