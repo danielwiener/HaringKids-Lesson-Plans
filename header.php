@@ -21,24 +21,40 @@
 	wp_title( '|', true, 'right' );
 
 	?></title>
+	<?php wp_enqueue_script("jquery"); ?>
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+		
+	<?php if( is_home() || is_front_page() ): ?>
+	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/tabs_slideshow.css" />
+	
+	<?php endif; ?>
+	
+	
+
+	
+	
+	
 <?php
 	/* We add some JavaScript to pages with the comment form
 	 * to support sites with threaded comments (when in use).
 	 */
-	if ( is_singular() && get_option( 'thread_comments' ) )
+	/*
+if ( is_singular() && get_option( 'thread_comments' ) ):
 		wp_enqueue_script( 'comment-reply' );
+		endif;
+*/
+	 ?>
+	 
 
-	/* Always have wp_head() just before the closing </head>
-	 * tag of your theme, or you will break many plugins, which
-	 * generally use this hook to add elements to <head> such
-	 * as styles, scripts, and meta tags.
-	 */
+	
 
-	wp_head();
-?>
+   <?php
+
+	wp_head();?>
+	<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/js/jquery.tools.min.js"></script>
+
 
 
 </head>
