@@ -155,6 +155,16 @@ function dw_posted_on() {
 }
 endif;
 
+/* Adding my own quicktags script for multiple instances of custom metatags *******************************************
+
+*/
+add_action('admin_print_scripts', 'dw_quicktags');
+function dw_quicktags() {
+	wp_enqueue_script(
+		'dw_quicktags',
+		'/wp-content/themes/lesson_plans/js/dw_quicktags.js'
+	);
+}
 
 /* Numeric Pagination *******************************************
 
@@ -287,11 +297,11 @@ echo'<input type="hidden" name="'.$meta_box['name'].'_noncename" id="'.$meta_box
 echo '<h3>'. $meta_box['title'] .' - '. $meta_box['description'] .'</h3>';
 /* var_dump($new_meta_boxes); */
 echo '<div class="">';
-echo '	<script type="text/javascript">edToolbar("' . $textarea_id . '")</script>';
+echo '	<script type="text/javascript">dw_edToolbar("' . $textarea_id . '")</script>';
 echo '<textarea rows="6" class="form-input-tip" cols="80" name="'.$meta_box['name'].'_value" tabindex="' . $tab_index_count . '" id="' . $textarea_id . '" style="width: 97%">';
 echo wpautop($meta_box_value);
-echo '</textarea> <script type="text/javascript">';
-echo 'edCanvas = document.getElementById("' . $textarea_id . '");</script>';
+echo '</textarea>';
+/*echo 'edCanvas = document.getElementById("' . $textarea_id . '");</script>'; */
 /* echo 'console.log(edToolbar())</script>';  */
 echo '</div><hr width="60%"';
 $tab_index_count++;
