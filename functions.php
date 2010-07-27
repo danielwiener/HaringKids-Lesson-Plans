@@ -125,13 +125,55 @@ add_action( 'init', 'build_taxonomies', 0 );
 		'query_var' => true,
 		'show_ui' => true,
 		'rewrite' => true ) ); 
-		
+
+	$labels = array(
+    'name' => _x( 'Locations', 'taxonomy general name' ),
+    'singular_name' => _x( 'Location', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Locations' ),
+    'popular_items' => __( 'Popular Locations' ),
+    'all_items' => __( 'All Locations' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit Locations' ), 
+    'update_item' => __( 'Update Locations' ),
+    'add_new_item' => __( 'Add New Location' ),
+    'new_item_name' => __( 'New Location Name' ),
+  );
+	
 	register_taxonomy(
 	'location',
 	'post',
 		array( 'hierarchical' => true,
-		'label' => 'Locations',
+		'labels' => $labels,
+		'_builtin' => false,
 		'query_var' => true,
+		'show_ui' => true,
+		'rewrite' => true ) );   
+ 
+
+	
+	$labels = array(
+    'name' => _x( 'Duration', 'taxonomy general name' ),
+    'singular_name' => _x( 'Duration', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Duration' ),
+    'popular_items' => __( 'Popular Durationss' ),
+    'all_items' => __( 'All Durations' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit Durations' ), 
+    'update_item' => __( 'Update Durations' ),
+    'add_new_item' => __( 'Add New Duration' ),
+    'new_item_name' => __( 'New Duration Name' ),
+  );
+	
+	register_taxonomy(
+	'duration',
+	'post',
+		array( 'hierarchical' => true,
+		'labels' => $labels,
+		'_builtin' => false,
+		'query_var' => true,
+		'show_ui' => true,
 		'rewrite' => true ) );   
  
 	}
