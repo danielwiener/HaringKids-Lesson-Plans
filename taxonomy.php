@@ -45,7 +45,17 @@ if ($term->name == '') {
 				/*get_template_part( 'loop', 'category' ); */
 				?>
 			
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php
+			/* global $paged; */
+				/* global $wp_query; */
+	 
+			/* $paged = (empty($wp_query->query_vars['paged'])) ? 1 : $wp_query->query_vars['paged']; */
+			/*
+query_posts(array('posts_per_page' => 12,
+			$taxonomy->query_var => $term->name,
+			'paged' => $paged));
+*/
+			while ( have_posts() ) : the_post(); ?>
 			<div id="post-<?php the_ID(); ?>" <?php post_class() ?>>
 			<h2 class="toc_title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyten' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
@@ -72,8 +82,8 @@ if ($term->name == '') {
 			</div><!-- .entry-utility -->
 		</div><!-- #post-## -->
 		<?php endwhile; ?>
-
-		<?php comments_template( '', true ); ?>
+<?php /* numeric_pagination(); */ ?>
+		
 			
 			</div><!-- #content -->
 		</div><!-- #container -->
