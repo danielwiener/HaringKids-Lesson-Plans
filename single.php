@@ -34,6 +34,7 @@
 				$materials_list = get_the_term_list( $post->ID, 'materials', '<strong>Materials:</strong> ', ', ', '' );
 				$institution_list = get_the_term_list( $post->ID, 'institutions', '<strong>Institution:</strong> ', ', ', '' );
 				$location_list = get_the_term_list( $post->ID, 'location', '<strong>Location:</strong> ', ', ', '' );
+				$duration_list = get_the_term_list( $post->ID, 'duration', '<strong>Duration:</strong> ', ', ', '' );
 				
 				?>
 				
@@ -56,6 +57,7 @@
 				<li><?php echo $materials_list; ?></li>
 				<li><?php echo $institution_list; ?></li>
 				<li><?php echo $location_list; ?></li>
+				<li><?php echo $duration_list; ?></li>
 				</ul>			
 						
 						 
