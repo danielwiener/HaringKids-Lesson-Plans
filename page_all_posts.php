@@ -29,12 +29,9 @@ Template Name: All Posts
 global $wp_query;
 var_dump($wp_query);
 */
-/*
-$myposts = get_posts('numberposts=-1&offset=$debut');
-var_dump($myposts);
-*/
+
 $wp_query = new WP_Query();
-$wp_query->query('caller_get_posts=1&orderby=post_date&order=DESC&posts_per_page=2&paged='.$paged);
+$wp_query->query('caller_get_posts=1&orderby=post_date&order=DESC&posts_per_page=12&paged='.$paged);
 
 /* foreach($myposts as $post) : */
 while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
