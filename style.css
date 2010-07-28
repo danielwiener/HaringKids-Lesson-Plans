@@ -34,6 +34,23 @@ body {
 	/* border: 1px solid black; */
 }
 
+/* =Global Elements
+-------------------------------------------------------------- */
+/* Text elements */
+
+a:link {
+	color:red;
+	text-decoration: none;
+}
+a:visited {
+	color:#FF9900;
+	text-decoration: none;
+}
+a:active,
+a:hover {
+	color: #666666;
+	text-decoration: none;
+}
 
 /* =Header
 -------------------------------------------------------------- */
