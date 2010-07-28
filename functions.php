@@ -213,7 +213,7 @@ function dw_quicktags() {
 This if from the Gravy template by Darren Hoyt. http://www.darrenhoyt.com 
 */
 
-function numeric_pagination ($pageCount = 2, $query = null) {
+function numeric_pagination ($pageCount = 5, $query = null) {
 
 	if ($query == null) {
 		global $wp_query;
