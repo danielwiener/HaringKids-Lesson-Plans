@@ -14,7 +14,7 @@ get_header(); ?>
 			
 <?php 
 global $query;
-var_dump($query); ?>
+/* var_dump($query); */ ?>
 <?php if ( have_posts() ) : ?>
 				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyten' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 				<?php
@@ -62,7 +62,7 @@ while (/* $wp_query-> */have_posts()) : /* $wp_query-> */the_post();
 			</div><!-- .entry-utility -->
 		</div><!-- #post-## -->
 <?php endwhile; ?>
-				<pre><?php var_dump($wp_query); ?></pre>
+				<!-- <pre><?php /* var_dump($wp_query); */ ?></pre> -->
 <?php else : ?>
 				<div id="post-0" class="post no-results not-found">
 					<h2 class="entry-title"><?php _e( 'Nothing Found', 'twentyten' ); ?></h2>
