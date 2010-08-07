@@ -224,6 +224,14 @@ color: red;
 text-decoration: none;
 }
 
+#entry-author-info .entry_author_image { 
+	background: #fff;
+	border: 1px solid #e7e7e7;
+	float: left;
+	margin: 0 -104px 0 0;
+	padding: 11px;
+	height: 60px;
+}
 
 .hentry {
 	margin: 0 0 20px 0;
