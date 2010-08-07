@@ -45,17 +45,45 @@ if ($term->name == '') {
 				/*get_template_part( 'loop', 'category' ); */
 				?>
 			
+			
+			<!-- <pre>Before Query taxonomy: <?php // var_dump($taxonomy); ?></pre> -->
 			<?php
-			/* global $paged; */
-				/* global $wp_query; */
-	 
-			/* $paged = (empty($wp_query->query_vars['paged'])) ? 1 : $wp_query->query_vars['paged']; */
-			/*
-query_posts(array('posts_per_page' => 12,
-			$taxonomy->query_var => $term->name,
-			'paged' => $paged));
-*/
-			while ( have_posts() ) : the_post(); ?>
+			 global $paged, $wp_query, $wp;
+			 			 
+			 			 			$args = wp_parse_args($wp->matched_query);
+			 			 
+			 			 			if ( !empty ( $args['paged'] ) && 0 == $paged ) {
+			 			 						
+			 			 								  $wp_query->set('paged', $args['paged']);
+			 			 						
+			 			 								  $paged =  1;// $args['paged'];
+			 			 						
+			 			 								}
+			 			 
+			 			 			$temp = $wp_query;
+			 			 
+			 			 			$wp_query= null;
+			
+
+
+			$wp_query = new WP_Query();
+			$args_2 = array(
+			'is_paged' => true,
+			'paged' => $paged,
+			'posts_per_page' => 12,
+			$taxonomy->query_var => $term->slug
+			);
+
+			$wp_query->query($args_2);
+			?>
+			<!-- <pre><?php // var_dump($wpdb); ?></pre>
+					<pre><?php // var_dump($wp_rewrite); ?></pre>
+					<pre><?php // var_dump($wp_query); ?></pre>
+					<pre><?php // var_dump($term); ?></pre>
+					<pre><?php // var_dump($paged); ?></pre>
+					<pre><?php // var_dump($taxonomy); ?></pre> -->
+			<?php 
+			while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 			<div id="post-<?php the_ID(); ?>" <?php post_class() ?>>
 			<h2 class="toc_title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyten' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
@@ -82,8 +110,24 @@ query_posts(array('posts_per_page' => 12,
 			</div><!-- .entry-utility -->
 		</div><!-- #post-## -->
 		<?php endwhile; ?>
-<?php /* numeric_pagination(); */ ?>
-		
+<?php  numeric_pagination();  ?>
+
+<!-- <div class="navigation">
+
+
+
+	<div class="alignleft"><?php previous_posts_link('&laquo; Previous') ?></div>
+
+
+
+	<div class="alignright"><?php next_posts_link('More &raquo;') ?></div>
+
+
+
+</div> -->
+
+
+<?php $wp_query = null; $wp_query = $temp; ?>		
 			
 			</div><!-- #content -->
 		</div><!-- #container -->
