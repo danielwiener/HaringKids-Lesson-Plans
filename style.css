@@ -237,6 +237,13 @@ text-decoration: none;
 	font-weight: normal;
 }
 
+.column {
+width: 200px;
+float:left;
+ /*border: 1px solid black;*/ 
+padding: 0 0 0 5px;	
+}
+
 /* =Widget Areas
 -------------------------------------------------------------- */
 
@@ -361,3 +368,21 @@ padding-left: 0px;
 	float: left;
 	margin-right: 24px;
 	margin-top: 4px;
+
+}
+	
+#content .button {
+		padding: 8px 14px;
+		background:#424242;
+		color:#FFF !important;
+		border:none;
+		font-size:1.2em;
+		}
+
+#content .button:hover {
+		background:#272727;
+		}
+
+#content .button:active {
+		background:#000;
+		}
