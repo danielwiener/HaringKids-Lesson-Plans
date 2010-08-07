@@ -501,5 +501,5 @@ function my_search_filter($query) {
 }
 add_filter('pre_get_posts','my_search_filter');
 */
-
+// require( get_stylesheet_directory() . '/debug.php' );
 ?>
