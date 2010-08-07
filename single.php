@@ -49,7 +49,7 @@
 						<p><a href="#more_images">View More Images</a></p>
 						<?php endif; ?>
 			<?php endif; ?>
-			<h2>Digest</h2>
+			<h2>Categories</h2>
 			<ul>
 				<li><?php echo $curriculum_list; ?></li>
 				<li><?php echo $age_grade_list; ?></li>
@@ -101,11 +101,11 @@
 
 <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 					<div id="entry-author-info">
-						<!-- <div id="author-avatar"> -->
-							<?php /* if(!empty(the_author_image())){
-							the_author_image();
-							} fix this. figure it out - author image*/?>
-						<!-- </div> --><!-- #author-avatar -->
+						<?php if (the_author_image()): ?>
+						<div id="author-avatar">
+							<?php the_author_image(); ?> 
+						</div><!-- #author-avatar -->
+						<?php endif ?>
 						<div id="author-description">
 							<h2><?php printf( esc_attr__( 'About %s', 'twentyten' ), get_the_author() ); ?></h2>
 							<?php the_author_meta( 'description' ); ?>
