@@ -21,15 +21,14 @@ Template Name: List of Teachers
 		<div id="container">
 			<div id="content" role="main">
 
-<h2>Teachers</h2>
+<h2>Contributors</h2>
 
 <ul>
 
 <?php 
 global $authors;
 $args = array(
-    'optioncount'   => 1,
-    'feed'          => "Feed"); 
+    'optioncount'   => 1); 
 wp_list_authors($args);
 ?>  
 </ul>
