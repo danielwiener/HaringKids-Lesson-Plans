@@ -110,7 +110,7 @@ if ( is_singular() && get_option( 'thread_comments' ) ):
 	}?>
 				</ul></li>
 				<li  class="menu-item menu-item-type-post_type"><a href="/lesson_plans/titles">Titles</a></li>
-				<li  class="menu-item menu-item-type-post_type"><a href="/lesson_plans/teachers">Contributors</a></li>
+				<li  class="menu-item menu-item-type-post_type"><a href="/lesson_plans/contributors">Contributors</a></li>
 				<li  class="menu-item menu-item-type-post_type"><a href="/lesson_plans/location">Locations</a></li>
 				<li  class="menu-item menu-item-type-post_type"><a href="/lesson_plans/institutions">Institutions</a></li>
 				<li  class="menu-item menu-item-type-post_type"><a href="/lesson_plans/duration">Duration</a><ul  class="submenu">
