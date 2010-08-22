@@ -26,7 +26,7 @@ Template Name: Page of Links
 <ul>
 
 <?php 
-/* global $authors; */
+
 $args = array('show_description' => 1,
 'between' => '<br />',
 'category_order' => 'DESC');
