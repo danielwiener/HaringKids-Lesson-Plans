@@ -35,6 +35,7 @@ $term_ids_equal_to = '';
 foreach ($list_of_term_ids as $term_key => $term_value) {
 if($term_key == 's') {
 } else {
+		if(is_numeric($term_value)) {
 	$select_list .= "rel{$rel_count}.term_taxonomy_id, ";
 	$term_ids_equal_to .= "and rel{$rel_count}.term_taxonomy_id = $term_value ";
 	
@@ -42,6 +43,7 @@ if($term_key == 's') {
 		$inner_join .= "INNER JOIN $wpdb->term_relationships rel{$rel_count} ON rel1.object_id = rel{$rel_count}.object_id ";
 	}
 	$rel_count++;
+	} //end numeric
 }
 }
 $select_list = substr($select_list,0,-2);
