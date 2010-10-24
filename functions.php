@@ -178,6 +178,72 @@ add_action( 'init', 'build_taxonomies', 0 );
  
 	}
 	
+	/** Tell WordPress to run twentyten_setup() when the 'after_setup_theme' hook is run. */
+	add_action( 'after_setup_theme', 'twentyten_setup' );
+
+	if ( ! function_exists( 'twentyten_setup' ) ):
+	/**
+	 * Sets up theme defaults and registers support for various WordPress features.
+	 *
+	 * Note that this function is hooked into the after_setup_theme hook, which runs
+	 * before the init hook. The init hook is too late for some features, such as indicating
+	 * support post thumbnails.
+	 *
+	 * To override twentyten_setup() in a child theme, add your own twentyten_setup to your child theme's
+	 * functions.php file.
+	 *
+ 		* When using a child theme (see http://codex.wordpress.org/Theme_Development and
+		* http://codex.wordpress.org/Child_Themes), you can override certain functions
+		* (those wrapped in a function_exists() call) by defining them first in your child theme's
+		* functions.php file. The child theme's functions.php file is included before the parent
+		* theme's file, so the child theme functions would be used.
+		* http://ideapress.googlecode.com/svn-history/r9/trunk/functions.php
+		*
+	 * @uses add_theme_support() To add support for post thumbnails and automatic feed links.
+	 * @uses register_nav_menus() To add support for navigation menus.
+	 * @uses add_custom_background() To add support for a custom background.
+	 * @uses add_editor_style() To style the visual editor.
+	 * @uses load_theme_textdomain() For translation/localization support.
+	 * @uses add_custom_image_header() To add support for a custom header. DW - GOT RID OF THIS.
+	 * @uses register_default_headers() To register the default custom header images provided with the theme.  DW - GOT RID OF THIS.
+	 * @uses set_post_thumbnail_size() To set a custom post thumbnail size.  DW - GOT RID OF THIS, THOUGH I MADE MY OWN LOWER DOWN IN THE 
+	 *
+	 * @since Twenty Ten 1.0
+	 */
+	function twentyten_setup() {
+
+		// This theme styles the visual editor with editor-style.css to match the theme style.
+		add_editor_style();
+
+		// This theme uses post thumbnails
+		add_theme_support( 'post-thumbnails' );
+
+		// Add default posts and comments RSS feed links to head
+		add_theme_support( 'automatic-feed-links' );
+
+		// Make theme available for translation
+		// Translations can be filed in the /languages/ directory
+		load_theme_textdomain( 'twentyten', TEMPLATEPATH . '/languages' );
+
+		$locale = get_locale();
+		$locale_file = TEMPLATEPATH . "/languages/$locale.php";
+		if ( is_readable( $locale_file ) )
+			require_once( $locale_file );
+
+		// This theme uses wp_nav_menu() in one location.
+		register_nav_menus( array(
+			'primary' => __( 'Primary Navigation', 'twentyten' ),
+		) );
+
+		// This theme allows users to set a custom background
+		add_custom_background();
+
+	
+	}
+	endif;
+	
+	
+	
 /* setting post thumbnails AND some extra sizes*/	
 if (function_exists('add_theme_support')) {
 	add_theme_support( 'post-thumbnails' );
