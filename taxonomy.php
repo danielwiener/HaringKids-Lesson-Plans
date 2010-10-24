@@ -92,7 +92,6 @@ if ($term->name == '') {
 			<?php if(has_post_thumbnail()): ?>
 			<a href="<?php the_permalink(); ?>">
 			<?php the_post_thumbnail('small-thumbnail',  array('class' => 'alignleft', 'title' => trim(strip_tags($post->post_title)), 'alt' => trim(strip_tags($post->post_title)))); 
-
 			?>
 			</a>
 			<?php endif; ?>
