@@ -39,6 +39,9 @@ if ( get_the_author_meta( 'description' ) ) : ?>
 							<h2><?php printf( __( 'About %s', 'twentyten' ), get_the_author() ); ?></h2>
 							<?php the_author_meta( 'description' ); ?>
 							<?php $author_stuff = get_the_author_meta('user_email', get_the_author_meta( 'ID' ));
+							if (get_the_author_meta('share_email') == 'true'): ?>
+								<br><br><a href="mailto:<?php the_author_meta('user_email', get_the_author_meta( 'ID' ) );?>">Email <?php the_author_meta('display_name', get_the_author_meta( 'ID' ) );?></a>
+							<?php endif; ?><?php
 							// echo '<pre>' .var_dump($author_stuff) . '</pre>'; ?>
 						</div><!-- #author-description	-->
 					</div><!-- #entry-author-info -->
