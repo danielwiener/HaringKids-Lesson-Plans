@@ -634,15 +634,36 @@ echo '</script>';
 }
 add_action('wp_footer', 'add_google_analytics');
 
-
 /*
-function my_search_filter($query) {
-   if ($query->is_search) {
-      $query->set('post_type','post');
-   }
-   return $query;
-}
-add_filter('pre_get_posts','my_search_filter');
+// Append content to the "Personal Options" block
+// http://planetozh.com/blog/2009/12/how-to-per-user-options-in-wordpress/
+// http://bavotasan.com/tutorials/adding-extra-fields-to-the-wordpress-user-profile/
 */
-// require( get_stylesheet_directory() . '/debug.php' );
+add_action('personal_options', 'share_email_option');
+add_action('personal_options_update', 'dw_save_user_share_email');
+add_action( 'edit_user_profile_update', 'dw_save_user_share_email' );
+if ( ! function_exists( 'share_email_option' ) ) :
+function share_email_option($user) {
+	// var_dump( $in ); // uncomment to see what is passed to the function
+
+	?>
+		<tr>
+			<th scope="row">Share Email</th>
+			<td><label for="share_email">
+			<input name="share_email" type="checkbox" id="share_email" value="true" <?php checked('true', $user->share_email); ?> /> Check for users who want to share their email addresses.
+			</label></td>
+		</tr>
+	<?php
+}
+ endif;
+
+// Handle data that's posted and sanitize before saving it
+if ( ! function_exists( 'dw_save_user_share_email' ) ) :
+function dw_save_user_share_email( $user_id ) {
+	if ( !current_user_can( 'edit_user', $user_id ) ) { return false; }
+	$dw_share_email = ( $_POST['share_email'] == 'true' ? 'true' : 'false'  );
+	update_user_meta( $user_id, 'share_email', $dw_share_email );
+}
+endif;
+
 ?>
