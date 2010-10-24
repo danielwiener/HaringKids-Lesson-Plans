@@ -28,7 +28,6 @@
 		
 	<?php if( is_home() || is_front_page() ): ?>
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/tabs_slideshow.css" />
-	
 	<?php endif; ?>
 	
 	
