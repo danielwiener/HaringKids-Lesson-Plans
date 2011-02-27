@@ -469,7 +469,7 @@ echo wpautop($meta_box_value);
 echo '</textarea>';
 /*echo 'edCanvas = document.getElementById("' . $textarea_id . '");</script>'; */
 /* echo 'console.log(edToolbar())</script>';  */
-echo '</div><hr width="60%"';
+echo '</div><hr width="60%">';
 $tab_index_count++;
 }
 }
@@ -479,6 +479,7 @@ if ( function_exists('add_meta_box') ) {
 add_meta_box( 'new-meta-boxes', 'Lesson Plans', 'new_meta_boxes', 'post', 'normal', 'high' );
 }
 }
+add_action('admin_menu', 'create_meta_box');
 
 function save_postdata( $post_id ) {
 global $post, $new_meta_boxes;
@@ -507,7 +508,7 @@ elseif($data == "")
 delete_post_meta($post_id, $meta_box['name'].'_value', get_post_meta($post_id, $meta_box['name'].'_value', true));
 }
 }
-add_action('admin_menu', 'create_meta_box');
+
 add_action('save_post', 'save_postdata');
 // end Custom Meta Boxes - Write Panels
 // Custom Admin Top Logo
