@@ -498,7 +498,7 @@ if ( !current_user_can( 'edit_post', $post_id ))
 return $post_id;
 }
 
-$data = $_POST[$meta_box['name'].'_value'];
+$data = $_POST[$meta_box['name'].'_value']; //add wpautop here... I think
 
 if(get_post_meta($post_id, $meta_box['name'].'_value') == "")
 add_post_meta($post_id, $meta_box['name'].'_value', $data, true);
