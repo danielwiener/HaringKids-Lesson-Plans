@@ -107,3 +107,10 @@ text-decoration: none;
 .disabled {
 	visibility:hidden !important;		
 }
+
+@media (max-width:800px) {
+	.images {
+	height: 650px;
+	width: 440px;
+	}
+}
