@@ -33,6 +33,7 @@ var_dump($wp_query);
 $wp_query = new WP_Query();
 $wp_query->query('caller_get_posts=1&orderby=post_date&order=DESC&posts_per_page=12&paged='.$paged);
 
+
 /* foreach($myposts as $post) : */
 while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class() ?>>
