@@ -507,6 +507,14 @@ padding-left: 0px;
 		clear: both;
 	    float:none;
 	    overflow: hidden;
-	    width: 220px;
+	    width: 100%;
+	}
+	#content h2.toc_title {
+	    line-height: 1em;
+	}
+	
+	#archive_pagination {
+		font-size: 11px;
+		padding: 10px 0 10px 0;
 	}
 }

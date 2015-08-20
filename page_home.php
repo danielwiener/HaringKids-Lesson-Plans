@@ -19,10 +19,12 @@ Template Name: Home
 
 <?php get_header(); ?>
 		<div id="container">
+			<div id="content">
+			<h1 class="page-title">Welcome to HaringKids Lesson Plans</h1>
+			<h2>Introduction and Recent Lessons</h2></div>
 			<div id="content_alt" role="main">
 
-<h2 class="page-title">Welcome to HaringKids Lesson Plans</h2>
-<h3>Introduction and Recent Lessons</h3>
+
 <a class="backward">prev</a>
 <div class="images">
 
